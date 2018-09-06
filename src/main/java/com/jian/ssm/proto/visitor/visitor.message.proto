@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.ljzn.grpc.visitor";
+option objc_class_prefix = "VISITOR";
+
+package VisitorSystem_cq;
+
+message VisitorMessage {
+    string visitorId = 1;  //访客Id(身份证号或者其他)
+    int32 idType = 2;  //证件类型
+    string visitorName=3;  //访客姓名
+    string sex=4; //性别
+    string nation=5; // 民族
+    string birthday=6; // 生日
+    string address=7; //地址
+    string depart=8; //颁发机构
+    string validityBegin=9; //有效开始日期
+    string validityEnd=10; //有效结束日期
+    bytes idPhoto=11; //证件照
+    bytes cameraPhoto=12; //现场照
+    bytes cameraFeature=13; //现场照特征
+    bytes fingerFeature=14; //指纹特征
+    int32 action=15; //操作
+    int64 version=16; //版本
+    float faceVerifyScore=17;  //人脸验证分值
+    string faceVerifyResult=18; //人脸验证结果
+    int64 dateTime=19; //日期
+    string contact=20; //联系方式
+    int32 belongId=21; //本系统分配的ID
+}
+
+message VisitInfoMessage{
+    string visitId=1; //访问ID
+    int32 employeeId=2; //被访人ID
+    string visitorId=3; //访客ID
+    string visitorName=4; //访客姓名
+    int32 reasonId=5; //访原因
+    bytes cameraPhoto=6; //现场照片
+    string checkInDeviceId=7; //签入设备Id
+    int64 checkInTime=8; //签入时间(秒级时间戳)
+    string checkOutDeviceId=9; //签离设备ID
+    int64 checkOutTime=10; //签出时间(秒级时间戳)
+    int32 state=11;// 状态(0访问中 ,1 已签离)
+    string comment=12; //备注
+    int32 action=15;  //操作
+    int64 version=16;  //版本
+    int32 belongId=17; //本系统分配的ID
+}
+
+message CheckOutMessage{
+    string visitId=1; //访问ID
+    string checkOutDeviceId=2; //签离设备ID
+    int64 checkOutTime=3;//签离时间
+    int32 belongId=4; //本系统分配的ID
+}
+
